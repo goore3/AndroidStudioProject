@@ -1,3 +1,0 @@
-# AndroidStudioProject
-Mobile Computing Project
-:)
