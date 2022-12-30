@@ -29,4 +29,9 @@
         android:name="com.example.androidstudioproject.ui.main.MapFragment"
         android:label="fragment_map"
         tools:layout="@layout/fragment_map" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.androidstudioproject.ui.main.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
 </navigation>
