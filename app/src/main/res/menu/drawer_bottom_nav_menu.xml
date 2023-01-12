@@ -10,4 +10,10 @@
         android:id="@+id/mapFragment"
         android:icon="@drawable/ic_baseline_map_24"
         android:title="Track Map"/>
+
+
+    <item
+        android:id="@+id/device"
+        android:icon="@drawable/ic_baseline_map_24"
+        android:title="Devices"/>
 </menu>
