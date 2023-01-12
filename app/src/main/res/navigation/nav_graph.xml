@@ -29,4 +29,28 @@
         android:name="com.example.androidstudioproject.ui.main.MapFragment"
         android:label="fragment_map"
         tools:layout="@layout/fragment_map" />
+    <fragment
+        android:id="@+id/deviceFragment"
+        android:name="com.example.androidstudioproject.DeviceFragment"
+        android:label="DeviceFragment" >
+        <action
+            android:id="@+id/action_deviceFragment_to_fitActivityFragment"
+            app:destination="@id/fitActivityFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fitActivityFragment"
+        android:name="com.example.androidstudioproject.FITActivities.FitActivityFragment"
+        android:label="FitActivityFragment">
+        <action
+            android:id="@+id/action_fitActivityFragment_to_fitDetialsFragment"
+            app:destination="@id/fitDetialsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fitDetialsFragment"
+        android:name="com.example.androidstudioproject.FITdetails.FitDetialsFragment"
+        android:label="FitDetialsFragment" />
+
+
 </navigation>
