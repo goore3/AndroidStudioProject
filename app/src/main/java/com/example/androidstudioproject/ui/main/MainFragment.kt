@@ -31,8 +31,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     private lateinit var binding: FragmentMainBinding
     var count = 0
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -42,9 +40,12 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentMainBinding.inflate(inflater, container, false)
-        checkUser(viewModel.user)
         viewModel.user.observe(viewLifecycleOwner, Observer{
-            checkUser(viewModel.user)
+            if(viewModel.checkUser()) {
+                binding.labelUsername.text = "Welcome user " + viewModel.user.value!!.email.toString()
+            } else {
+                binding.labelUsername.text = ""
+            }
         })
         binding.button.setOnClickListener {
             Log.d(debugTag,"Button Pressed")
@@ -53,15 +54,5 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         }
         val view = binding.root
         return view
-    }
-    fun checkUser(user: LiveData<FirebaseUser?>) {
-        if(user.value != null) {
-            binding.labelUsername.text = "Welcome user " + user.value!!.email.toString()
-            Log.d(debugTag, "User found" + user.value)
-        } else {
-            binding.labelUsername.text = ""
-            val newUser = viewModel.auth.value!!.currentUser
-            Log.d(debugTag, "Hello User")
-        }
     }
 }

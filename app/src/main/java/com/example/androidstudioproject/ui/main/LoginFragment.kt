@@ -39,8 +39,6 @@ class LoginFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        val currentUser = auth.currentUser
-//        updateUI(currentUser)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,6 +62,16 @@ class LoginFragment : Fragment() {
             viewModel.client.value!!.signOut()
             viewModel.unsetUser()
         }
+
+        viewModel.user.observe(viewLifecycleOwner, Observer{
+            if(viewModel.checkUser()) {
+                binding.signInButton.visibility = View.GONE
+                binding.signOutButton.visibility = View.VISIBLE
+            } else {
+                binding.signInButton.visibility = View.VISIBLE
+                binding.signOutButton.visibility = View.GONE
+            }
+        })
 
         return binding.root
     }
@@ -91,22 +99,11 @@ class LoginFragment : Fragment() {
                     Log.d(TAG, "signInWithCredential:success")
                     val user = auth.currentUser
                     viewModel.setUser(user)
-                    Log.d(TAG, "signInWithCredential:bruh")
-//                    updateUI(user)
                 } else {
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
                     Snackbar.make(requireView(), "Authentication Failed.", Snackbar.LENGTH_SHORT).show()
-//                    updateUI(null)
                 }
             }
         }
     }
-//
-//    private fun updateUI(user: FirebaseUser?) {
-//        if (user == null) {
-//            Log.w(TAG, "User is null, not going to navigate")
-//            return
-//        }
-//        startActivity(Intent(this, ))
-//    }
 }
