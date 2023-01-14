@@ -30,6 +30,11 @@
         android:label="fragment_map"
         tools:layout="@layout/fragment_map" />
     <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.androidstudioproject.ui.main.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
+    <fragment
         android:id="@+id/deviceFragment"
         android:name="com.example.androidstudioproject.DeviceFragment"
         android:label="DeviceFragment" >
@@ -51,6 +56,4 @@
         android:id="@+id/fitDetialsFragment"
         android:name="com.example.androidstudioproject.FITdetails.FitDetialsFragment"
         android:label="FitDetialsFragment" />
-
-
 </navigation>

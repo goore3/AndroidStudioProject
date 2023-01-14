@@ -6,5 +6,9 @@
         android:title="Settings"
         android:menuCategory="secondary"
         app:showAsAction="never" />
-
+    <item
+        android:id="@+id/loginFragment"
+        android:title="Login"
+        android:menuCategory="secondary"
+        app:showAsAction="never" />
 </menu>
