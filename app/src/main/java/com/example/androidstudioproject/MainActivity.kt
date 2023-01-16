@@ -2,6 +2,7 @@ package com.example.androidstudioproject
 
 import android.Manifest
 import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -33,7 +34,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private lateinit var binding: ActivityMainBinding
     private lateinit var appBarConfiguration: AppBarConfiguration
-    private val viewModel: MainViewModel by viewModels()
+    private val mainViewModel: MainViewModel by viewModels()
     companion object {
         lateinit var appContext: Context
         lateinit var viewModel: FitActivityViewModel
@@ -107,16 +108,16 @@ class MainActivity : AppCompatActivity() {
         bottomNav.setupWithNavController(navController)
 
         val auth = FirebaseAuth.getInstance()
-        viewModel.setAuth(auth)
+        mainViewModel.setAuth(auth)
         val user = auth.currentUser
-        viewModel.setUser(user)
+        mainViewModel.setUser(user)
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
         val client = GoogleSignIn.getClient(this, gso)
-        viewModel.setClient(client)
+        mainViewModel.setClient(client)
 
     }
 
