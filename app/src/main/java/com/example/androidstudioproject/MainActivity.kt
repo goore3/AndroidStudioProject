@@ -2,6 +2,7 @@ package com.example.androidstudioproject
 
 import android.Manifest
 import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -12,12 +13,14 @@ import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
+import androidx.databinding.DataBindingUtil.setContentView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
@@ -33,13 +36,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private lateinit var binding: ActivityMainBinding
     private lateinit var appBarConfiguration: AppBarConfiguration
-    private val viewModel: MainViewModel by viewModels()
+    private val mainViewModel: MainViewModel by viewModels()
     companion object {
         lateinit var appContext: Context
         lateinit var viewModel: FitActivityViewModel
-
     }
-    private val requestMultiplePermissions =
+    private val requestMultiplePermission =
         registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
             permissions.entries.forEach {
                 Log.d("test006", "${it.key} = ${it.value}")
@@ -66,6 +68,8 @@ class MainActivity : AppCompatActivity() {
                 // Only approximate location access granted.
             } else -> {
             // No location access granted.
+
+            // TODO: Handle lack of access to geolocation
         }
 
         }
@@ -107,16 +111,16 @@ class MainActivity : AppCompatActivity() {
         bottomNav.setupWithNavController(navController)
 
         val auth = FirebaseAuth.getInstance()
-        viewModel.setAuth(auth)
+        mainViewModel.setAuth(auth)
         val user = auth.currentUser
-        viewModel.setUser(user)
+        mainViewModel.setUser(user)
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
         val client = GoogleSignIn.getClient(this, gso)
-        viewModel.setClient(client)
+        mainViewModel.setClient(client)
 
     }
 
