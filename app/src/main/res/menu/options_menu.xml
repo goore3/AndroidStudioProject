@@ -11,4 +11,9 @@
         android:title="Login"
         android:menuCategory="secondary"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/createRouteFragment"
+        android:title="Create Route"
+        android:menuCategory="secondary"
+        app:showAsAction="never" />
 </menu>

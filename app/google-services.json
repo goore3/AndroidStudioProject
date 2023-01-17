@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "957015320552",
+    "firebase_url": "https://mobile-computing-project-3099f-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "mobile-computing-project-3099f",
     "storage_bucket": "mobile-computing-project-3099f.appspot.com"
   },
@@ -19,6 +20,14 @@
           "android_info": {
             "package_name": "com.example.androidstudioproject",
             "certificate_hash": "f3051da05c5eaaacb0155c87297211b85e98772a"
+          }
+        },
+        {
+          "client_id": "957015320552-vv2cv16j4glj0kmpb2tedcmf64mhjs99.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.androidstudioproject",
+            "certificate_hash": "e5900f3d27fbbc0b3730533a14d99dbce3043516"
           }
         },
         {

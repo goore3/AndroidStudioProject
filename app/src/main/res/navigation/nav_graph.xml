@@ -56,4 +56,9 @@
         android:id="@+id/fitDetialsFragment"
         android:name="com.example.androidstudioproject.FITdetails.FitDetialsFragment"
         android:label="FitDetialsFragment" />
+    <fragment
+        android:id="@+id/createRouteFragment"
+        android:name="com.example.androidstudioproject.ui.main.CreateRouteFragment"
+        android:label="fragment_create_route"
+        tools:layout="@layout/fragment_create_route" />
 </navigation>
